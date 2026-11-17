@@ -1029,7 +1029,7 @@ async function api(path, { method = "GET", body, form, auth = true } = {}) {
   try {
     res = await fetch(API + path, { method, headers, body: payload });
   } catch (e) {
-    throw new Error("Backend se connect nahi ho paa raha. Check karo ki uvicorn chal raha hai (" + API + ") aur page 127.0.0.1 se khula hai.");
+    throw new Error("Backend se connect nahi ho paa raha. Check karo ki uvicorn chal raha hai (" + API + ") aur page https://campus-sheild-s2kt.onrender.com se khula hai.");
   }
   if (res.status === 204) return null;
   let data = null;
