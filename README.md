@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SRMU Campus Recover
 
 This workspace contains the backend for the SRMU Campus Recover lost-and-found system.
@@ -48,3 +49,6 @@ uvicorn app.main:app --reload
 - The API is intended for campus lost-and-found workflows.
 - Sensitive claim verification details are hidden from the public and exposed only to allowed users/admins.
 - Image matching is assistive and should still be reviewed by staff before final resolution.
+=======
+# Campus-Sheild
+>>>>>>> 7872777044efa14909a479fa64157b27b9a2f22b
