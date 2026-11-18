@@ -40,12 +40,13 @@ Category = Literal["gadgets", "id_cards", "keys_bags", "other"]
 
 app = FastAPI(title="SRMU Campus Recover API")
 
-FRONTEND_URL = os.getenv("FRONTEND_URL", "https://6afca9824eb600433da1efd5--campus-sheild.netlify.app")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://campus-sheild.netlify.app")
+
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[FRONTEND_URL],
-    allow_origin_regex=r"http://(localhost|127\.0\.0\.1)(:\d+)?",
+    allow_origin_regex=r"https://([a-z0-9-]+\.)?campus-sheild\.netlify\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
