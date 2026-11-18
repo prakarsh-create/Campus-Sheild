@@ -40,16 +40,18 @@ Category = Literal["gadgets", "id_cards", "keys_bags", "other"]
 
 app = FastAPI(title="SRMU Campus Recover API")
 
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://6afca9824eb600433da1efd5--campus-sheild.netlify.app")
+
 app.add_middleware(
     CORSMiddleware,
-    # Dev ke liye localhost / 127.0.0.1 ka koi bhi port allowed (Live Server 5500, Live Preview 3000, Vite 5173...)
-    # Deploy karte waqt isko hatake apna frontend URL allow_origins mein daalo.
+    allow_origins=[FRONTEND_URL],
     allow_origin_regex=r"http://(localhost|127\.0\.0\.1)(:\d+)?",
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
 
+app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
 
 # ---------------------------------------------------------------- helpers
 def item_to_out(item: models.Item, viewer: Optional[models.User] = None) -> schemas.ItemOut:
